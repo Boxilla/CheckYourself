@@ -12,6 +12,14 @@
     tools:context="com.example.francisco_javier.check_yourselflogin.LoginActivity">
 
     <!-- Login progress -->
+    <ProgressBar
+        android:id="@+id/login_progress"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:visibility="gone" />
+
     <ScrollView
         android:id="@+id/login_form"
         android:layout_width="match_parent"
@@ -73,24 +81,7 @@
                 android:layout_marginTop="16dp"
                 android:text="@string/action_register"
                 android:textStyle="bold" />
-            <Button
-                android:id="@+id/register_button2"
-                style="?android:textAppearanceSmall"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="@string/action_register2"
-                android:textStyle="bold"/>
 
         </LinearLayout>
     </ScrollView>
-
-    <ProgressBar
-        android:id="@+id/login_progress"
-        style="?android:attr/progressBarStyleLarge"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:visibility="gone" />
-
 </LinearLayout>

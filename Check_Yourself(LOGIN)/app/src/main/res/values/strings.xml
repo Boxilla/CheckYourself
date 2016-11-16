@@ -12,8 +12,7 @@
     <string name="error_field_required">Este campo es obligatorio</string>
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."</string>
-    <string name="action_register">Registrarse como paciente</string>
-    <string name="action_register2">Registrarse como Doctor</string>
+    <string name="action_register">¿No tienes cuenta?    Registrarse</string>
     <string name="title_activity_main">CheckYourself!</string>
 
     <string name="navigation_drawer_open">Abrir barra de navegación</string>
@@ -22,7 +21,14 @@
     <string name="action_settings">Configuración</string>
     <string name="title_activity_settings">Configuración</string>
 
-    <!-- Strings related to Settings -->
+    <!-- Strings related to Register -->
+    <string name="pedir_rut">Rut</string>
+    <string name="pedir_nombre">Nombre y Apellido</string>
+    <string name="pedir_email">Email</string>
+    <string name="pedir_pass">Contraseña</string>
+    <string name="pedir_pass2">Repita Contraseña</string>
+    <string name="pedir_fono">Teléfono</string>
+    <string name="completar_registro">Hecho!</string>
 
     <!-- Example General settings -->
     <string name="pref_header_general">General</string>
@@ -94,4 +100,8 @@
 
     <string name="pref_title_vibrate">Vibrate</string>
     <string name="title_activity_registro_paciente">Ingrese Datos</string>
+    <string name="title_activity_register">Registrarse</string>
+
+
+
 </resources>

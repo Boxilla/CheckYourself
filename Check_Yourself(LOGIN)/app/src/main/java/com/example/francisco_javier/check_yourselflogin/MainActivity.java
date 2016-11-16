@@ -33,14 +33,6 @@ public class MainActivity extends AppCompatActivity
                         .setAction("Action", null).show();
             }
         });
-    //    Button mEmailSignInButton2 = (Button) findViewById(R.id.sign_in_button);
-     //   mEmailSignInButton2.setOnClickListener(new View.OnClickListener() {
-    //        @Override
-    //        public void onClick(View view) {
-    //            Intent intent2 = new Intent(view.getContext(), LoginActivity.class);
-    //            startActivityForResult(intent2, 0);
-    //        }
-    //    });
     }
 
     @Override
