@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_tratamiento"
+            android:title="Tratamiento" />
+        <item
+            android:id="@+id/nav_calendario"
+            android:title="Calendario" />
+        <item
+            android:id="@+id/nav_info"
+            android:title="Información" />
+    </group>
+
+    <item android:title="Social">
+        <menu>
+            <item
+                android:id="@+id/nav_ubicacion"
+                android:title="Compartir Ubicación" />
+            <item
+                android:id="@+id/nav_casos"
+                android:title="Explorar otros casos" />
+            <item
+                android:id="@+id/nav_doctores"
+                android:title="Doctores" />
+        </menu>
+    </item>
+
+</menu>
