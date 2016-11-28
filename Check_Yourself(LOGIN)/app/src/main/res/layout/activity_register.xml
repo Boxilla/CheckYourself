@@ -12,7 +12,7 @@
 
     <!-- Login progress -->
     <ProgressBar
-        android:id="@+id/login_progress"
+        android:id="@+id/loginProgress"
         style="?android:attr/progressBarStyleLarge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -20,7 +20,7 @@
         android:visibility="gone" />
 
     <ScrollView
-        android:id="@+id/login_form"
+        android:id="@+id/loginForm"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -40,7 +40,8 @@
                     android:layout_height="wrap_content"
                     android:hint="@string/pedir_rut"
                     android:maxLines="1"
-                    android:singleLine="true" />
+                    android:singleLine="true"
+                    android:inputType="number" />
 
             </android.support.design.widget.TextInputLayout>
 
@@ -52,7 +53,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/pedir_nombre"
-                    />
+                    android:inputType="textCapWords|textPersonName" />
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
@@ -77,35 +78,38 @@
                     android:layout_height="wrap_content"
                     android:hint="@string/pedir_fono"
                     android:maxLines="1"
-                    android:singleLine="true" />
+                    android:singleLine="true"
+                    android:inputType="phone" />
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <AutoCompleteTextView
-                    android:id="@+id/contraseña"
+                    android:id="@+id/contrasena"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/pedir_pass"
                     android:maxLines="1"
-                    android:singleLine="true" />
+                    android:singleLine="true"
+                    android:inputType="textPassword" />
             </android.support.design.widget.TextInputLayout>
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <AutoCompleteTextView
-                    android:id="@+id/contraseña2"
+                    android:id="@+id/contrasena2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/pedir_pass2"
                     android:maxLines="1"
-                    android:singleLine="true" />
+                    android:singleLine="true"
+                    android:inputType="textPassword" />
             </android.support.design.widget.TextInputLayout>
 
 
             <Button
-                android:id="@+id/email_sign_in_button"
+                android:id="@+id/done_button"
                 style="?android:textAppearanceSmall"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

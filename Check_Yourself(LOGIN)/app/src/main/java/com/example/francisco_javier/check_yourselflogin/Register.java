@@ -4,6 +4,7 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
 import android.content.pm.PackageManager;
+import android.media.AudioRouting;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -34,15 +35,8 @@ import java.util.List;
 
 import static android.Manifest.permission.READ_CONTACTS;
 
-/**
- * A login screen that offers login via email/password.
- */
 public class Register extends AppCompatActivity implements LoaderCallbacks<Cursor> {
 
-    /**
-     * Id to identity READ_CONTACTS permission request.
-     */
-    private static final int REQUEST_READ_CONTACTS = 0;
 
     /**
      * A dummy authentication store containing known user names and passwords.
@@ -57,8 +51,13 @@ public class Register extends AppCompatActivity implements LoaderCallbacks<Curso
     private UserLoginTask mAuthTask = null;
 
     // UI references.
-    private AutoCompleteTextView mEmailView;
-    private EditText mPasswordView;
+    private AutoCompleteTextView mRutView;
+    private AutoCompleteTextView mNombreView;
+    private AutoCompleteTextView mMailView;
+    private AutoCompleteTextView mTelefonoView;
+    private AutoCompleteTextView mPassView;
+    private AutoCompleteTextView mPass2View;
+
     private View mProgressView;
     private View mLoginFormView;
 
@@ -67,119 +66,132 @@ public class Register extends AppCompatActivity implements LoaderCallbacks<Curso
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         // Set up the login form.
-        mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
-        populateAutoComplete();
+        mRutView = (AutoCompleteTextView) findViewById(R.id.rut);
+        mNombreView = (AutoCompleteTextView) findViewById(R.id.nombre);
+        mMailView = (AutoCompleteTextView) findViewById(R.id.mail);
+        mTelefonoView = (AutoCompleteTextView) findViewById(R.id.telefono);
+        mPassView = (AutoCompleteTextView) findViewById(R.id.contrasena);
+        mPass2View = (AutoCompleteTextView) findViewById(R.id.contrasena2);
 
-        mLoginFormView = findViewById(R.id.login_form);
-        mProgressView = findViewById(R.id.login_progress);
-    }
-
-    private void populateAutoComplete() {
-        if (!mayRequestContacts()) {
-            return;
-        }
-
-        getLoaderManager().initLoader(0, null, this);
-    }
-
-    private boolean mayRequestContacts() {
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
-            return true;
-        }
-        if (checkSelfPermission(READ_CONTACTS) == PackageManager.PERMISSION_GRANTED) {
-            return true;
-        }
-        if (shouldShowRequestPermissionRationale(READ_CONTACTS)) {
-            Snackbar.make(mEmailView, R.string.permission_rationale, Snackbar.LENGTH_INDEFINITE)
-                    .setAction(android.R.string.ok, new View.OnClickListener() {
-                        @Override
-                        @TargetApi(Build.VERSION_CODES.M)
-                        public void onClick(View v) {
-                            requestPermissions(new String[]{READ_CONTACTS}, REQUEST_READ_CONTACTS);
-                        }
-                    });
-        } else {
-            requestPermissions(new String[]{READ_CONTACTS}, REQUEST_READ_CONTACTS);
-        }
-        return false;
-    }
-
-    /**
-     * Callback received when a permissions request has been completed.
-     */
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
-                                           @NonNull int[] grantResults) {
-        if (requestCode == REQUEST_READ_CONTACTS) {
-            if (grantResults.length == 1 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                populateAutoComplete();
+        Button mDoneButton = (Button) findViewById(R.id.done_button);
+        mDoneButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                attemptRegister();
             }
-        }
+        });
+        mLoginFormView = findViewById(R.id.loginForm);
+        mProgressView = findViewById(R.id.loginProgress);
     }
-
-
     /**
      * Attempts to sign in or register the account specified by the login form.
      * If there are form errors (invalid email, missing fields, etc.), the
      * errors are presented and no actual login attempt is made.
      */
-    private void attemptLogin() {
+    private void attemptRegister() {
         if (mAuthTask != null) {
             return;
         }
-
         // Reset errors.
-        mEmailView.setError(null);
-        mPasswordView.setError(null);
+        mMailView.setError(null);
+        mPassView.setError(null);
 
         // Store values at the time of the login attempt.
-        String email = mEmailView.getText().toString();
-        String password = mPasswordView.getText().toString();
+        String email = mMailView.getText().toString();
+        String pass = mPassView.getText().toString();
+        String rut = mRutView.getText().toString();
+        String nombre = mNombreView.getText().toString();
+        String telefono = mTelefonoView.getText().toString();
+        String pass2 = mPass2View.getText().toString();
 
         boolean cancel = false;
         View focusView = null;
 
-        // Check for a valid password, if the user entered one.
-        if (!TextUtils.isEmpty(password) && !isPasswordValid(password)) {
-            mPasswordView.setError(getString(R.string.error_invalid_password));
-            focusView = mPasswordView;
+        // Passwords valida
+        if (!TextUtils.isEmpty(pass) && !isPasswordValid(pass)) {
+            mPassView.setError(getString(R.string.error_invalid_password));
+            focusView = mPassView;
+            cancel = true;
+        }
+        if (!TextUtils.isEmpty(pass2) && !isPassword2Valid(pass,pass2)){
+            mPassView.setError(getString(R.string.error_password2));
+            focusView = mPass2View;
+            cancel = true;
+        }
+        // Rut Valido
+        if (TextUtils.isEmpty(rut)) {
+            mRutView.setError(getString(R.string.error_field_required));
+            focusView = mRutView;
+            cancel = true;
+        } else if (!isrutValid(rut)) {
+            mRutView.setError(getString(R.string.error_invalid_rut));
+            focusView = mRutView;
+            cancel = true;
+        }
+        // Telefono Valido
+        if (TextUtils.isEmpty(telefono)){
+            mTelefonoView.setError(getString(R.string.error_field_required));
+            focusView = mTelefonoView;
+            cancel = true;
+        } else if (!isTelefonoValid(telefono)) {
+            mTelefonoView.setError(getString(R.string.error_invalid_telefono));
+            focusView = mTelefonoView;
             cancel = true;
         }
 
-        // Check for a valid email address.
+        // Nombre Valido
+        if (TextUtils.isEmpty(nombre)) {
+            mNombreView.setError(getString(R.string.error_field_required));
+            focusView = mNombreView;
+            cancel = true;
+        }
+        // Email Valido
         if (TextUtils.isEmpty(email)) {
-            mEmailView.setError(getString(R.string.error_field_required));
-            focusView = mEmailView;
+            mMailView.setError(getString(R.string.error_field_required));
+            focusView = mMailView;
             cancel = true;
         } else if (!isEmailValid(email)) {
-            mEmailView.setError(getString(R.string.error_invalid_email));
-            focusView = mEmailView;
+            mMailView.setError(getString(R.string.error_invalid_email));
+            focusView = mMailView;
             cancel = true;
         }
 
         if (cancel) {
-            // There was an error; don't attempt login and focus the first
+            // There was an error; don't attempt register and focus the first
             // form field with an error.
             focusView.requestFocus();
         } else {
             // Show a progress spinner, and kick off a background task to
             // perform the user login attempt.
             showProgress(true);
-            mAuthTask = new UserLoginTask(email, password);
+            mAuthTask = new UserLoginTask(email, pass);
             mAuthTask.execute((Void) null);
         }
     }
 
     private boolean isEmailValid(String email) {
-        //TODO: Replace this with your own logic
+
         return email.contains("@");
+    }
+    private boolean isrutValid(String rut) {
+        String todos = "0123456789";
+        for (int i = 0 ; i < rut.length(); i++){
+            if (!todos.contains(Character.toString(rut.charAt(i)))){
+                return false;
+            }
+        }
+        return rut.length() == 8;
     }
 
     private boolean isPasswordValid(String password) {
-        //TODO: Replace this with your own logic
         return password.length() > 4;
     }
-
+    private boolean isPassword2Valid(String password, String password2){
+        return password.equals(password2);
+    }
+    private boolean isTelefonoValid(String telefono){
+        return telefono.length() == 12;
+    }
     /**
      * Shows the progress UI and hides the login form.
      */
@@ -248,14 +260,6 @@ public class Register extends AppCompatActivity implements LoaderCallbacks<Curso
 
     }
 
-    private void addEmailsToAutoComplete(List<String> emailAddressCollection) {
-        //Create adapter to tell the AutoCompleteTextView what to show in its dropdown list.
-        ArrayAdapter<String> adapter =
-                new ArrayAdapter<>(Register.this,
-                        android.R.layout.simple_dropdown_item_1line, emailAddressCollection);
-    }
-
-
     private interface ProfileQuery {
         String[] PROJECTION = {
                 ContactsContract.CommonDataKinds.Email.ADDRESS,
@@ -311,8 +315,8 @@ public class Register extends AppCompatActivity implements LoaderCallbacks<Curso
             if (success) {
                 finish();
             } else {
-                mPasswordView.setError(getString(R.string.error_incorrect_password));
-                mPasswordView.requestFocus();
+                mPassView.setError(getString(R.string.error_incorrect_password));
+                mPassView.requestFocus();
             }
         }
 

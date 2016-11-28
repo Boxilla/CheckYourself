@@ -1,15 +1,17 @@
 <resources>
-    <string name="app_name">Check_Yourself! (LOGIN)</string>
+    <string name="app_name">Check_Yourself!</string>
 
-    <!-- Strings related to login -->
     <string name="prompt_email">RUT</string>
     <string name="prompt_password">Contraseña</string>
     <string name="action_sign_in">Iniciar Sesión</string>
     <string name="action_sign_in_short">Entrar</string>
-    <string name="error_invalid_email">Ingrese un RUT válido</string>
+    <string name="error_invalid_rut">Ingrese un RUT válido</string>
+    <string name="error_invalid_email">Ingrese una dirección de correo válida</string>
     <string name="error_invalid_password">La contraseña es muy corta</string>
     <string name="error_incorrect_password">Contraseña Incorrecta</string>
     <string name="error_field_required">Este campo es obligatorio</string>
+    <string name="error_password2">Las contraseñas no coinciden</string>
+    <string name="error_invalid_telefono">Ingrese un numero valido (ej. +56912345678)</string>
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."</string>
     <string name="action_register">¿No tienes cuenta?    Registrarse</string>
@@ -17,6 +19,14 @@
 
     <string name="navigation_drawer_open">Abrir barra de navegación</string>
     <string name="navigation_drawer_close">Cerrar barra de navegación</string>
+    <string name="navigation_drawer_tratamiento">Tratamiento</string>
+    <string name="navigation_drawer_calendario">Calendario</string>
+    <string name="navigation_drawer_informacion">Información</string>
+    <string name="navigation_drawer_ubicacion">Compartir ubicación</string>
+    <string name="navigation_drawer_casos">Explorar otros casos</string>
+    <string name="navigation_drawer_doctores">Doctores</string>
+    <string name="navigation_drawer_social">Social</string>
+
 
     <string name="action_settings">Configuración</string>
     <string name="title_activity_settings">Configuración</string>
@@ -39,7 +49,7 @@
     </string>
 
     <string name="pref_title_display_name">Mostrar Nombre</string>
-    <string name="pref_default_display_name">John Smith</string>
+    <string name="pref_default_display_name">John Doe</string>
 
     <string name="pref_title_add_friends_to_messages">Add friends to messages</string>
     <string-array name="pref_example_list_titles">
@@ -91,17 +101,20 @@
     <string name="pref_title_system_sync_settings">System sync settings</string>
 
     <!-- Example settings for Notifications -->
-    <string name="pref_header_notifications">Notifications</string>
+    <string name="pref_header_notifications">Notificaciones</string>
 
-    <string name="pref_title_new_message_notifications">New message notifications</string>
+    <string name="pref_title_new_message_notifications">Nuevos Mensajes</string>
 
     <string name="pref_title_ringtone">Ringtone</string>
-    <string name="pref_ringtone_silent">Silent</string>
+    <string name="pref_ringtone_silent">Silencio</string>
 
     <string name="pref_title_vibrate">Vibrate</string>
     <string name="title_activity_registro_paciente">Ingrese Datos</string>
     <string name="title_activity_register">Registrarse</string>
+    <string name="title_activity_maps">Mapa</string>
 
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 </resources>

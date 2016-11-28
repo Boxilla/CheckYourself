@@ -4,26 +4,26 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_tratamiento"
-            android:title="Tratamiento" />
+            android:title="@string/navigation_drawer_tratamiento" />
         <item
             android:id="@+id/nav_calendario"
-            android:title="Calendario" />
+            android:title="@string/navigation_drawer_calendario" />
         <item
             android:id="@+id/nav_info"
-            android:title="Información" />
+            android:title="@string/navigation_drawer_informacion" />
     </group>
 
-    <item android:title="Social">
+    <item android:title="@string/navigation_drawer_social">
         <menu>
             <item
                 android:id="@+id/nav_ubicacion"
-                android:title="Compartir Ubicación" />
+                android:title="@string/navigation_drawer_ubicacion" />
             <item
                 android:id="@+id/nav_casos"
-                android:title="Explorar otros casos" />
+                android:title="@string/navigation_drawer_casos" />
             <item
                 android:id="@+id/nav_doctores"
-                android:title="Doctores" />
+                android:title="@string/navigation_drawer_doctores" />
         </menu>
     </item>
 
