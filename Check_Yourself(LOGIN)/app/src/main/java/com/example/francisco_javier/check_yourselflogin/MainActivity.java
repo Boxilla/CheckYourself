@@ -20,8 +20,26 @@ import android.view.MenuItem;
 import android.widget.Button;
 import android.support.annotation.NonNull;
 
+
+import android.app.ProgressDialog;
+import android.os.AsyncTask;
+import android.support.v7.app.ActionBarActivity;
+import android.os.Bundle;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import java.io.InputStream;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+    private String IP = "10.10.18.26:3306";
+    private String baseDatos = "/intro";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -117,3 +135,7 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 }
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////CONEXION SERVER //////////////////////////////////////////////////////////////////////////////////////
+
+
