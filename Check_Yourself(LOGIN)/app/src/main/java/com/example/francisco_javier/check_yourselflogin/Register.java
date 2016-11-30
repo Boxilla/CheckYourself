@@ -52,7 +52,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import static android.Manifest.permission.READ_CONTACTS;
 
 public class Register extends AppCompatActivity implements LoaderCallbacks<Cursor> {
 
@@ -275,7 +274,7 @@ public class Register extends AppCompatActivity implements LoaderCallbacks<Curso
 
     @Override
     public void onLoadFinished(Loader<Cursor> cursorLoader, Cursor cursor) {
-        List<String> emails = new ArrayList<>();
+        List<String> emails = new ArrayList();
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
             emails.add(cursor.getString(ProfileQuery.ADDRESS));

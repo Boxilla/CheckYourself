@@ -35,6 +35,5 @@ dependencies {
     compile 'com.android.support:support-v4:24.2.1'
     compile 'com.android.support:support-vector-drawable:24.2.1'
     compile 'com.google.android.gms:play-services:9.8.0'
-    compile files('mysql-connector-java-5.1.40-bin.jar')
     testCompile 'junit:junit:4.12'
 }

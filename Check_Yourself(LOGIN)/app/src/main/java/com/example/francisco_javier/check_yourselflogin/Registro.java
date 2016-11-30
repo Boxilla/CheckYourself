@@ -1,57 +1,25 @@
 package com.example.francisco_javier.check_yourselflogin;
 
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.annotation.TargetApi;
-import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.media.AudioRouting;
-import android.support.annotation.NonNull;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.app.LoaderManager.LoaderCallbacks;
 
-import android.content.CursorLoader;
-import android.content.Loader;
-import android.database.Cursor;
-import android.net.Uri;
 import android.os.AsyncTask;
 
-import android.os.Build;
 import android.os.Bundle;
-import android.provider.ContactsContract;
-import android.text.TextUtils;
-import android.view.KeyEvent;
+
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.inputmethod.EditorInfo;
-import android.widget.ArrayAdapter;
+
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import android.app.ProgressDialog;
-import android.os.AsyncTask;
-import android.support.v7.app.ActionBarActivity;
-import android.os.Bundle;
-import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+
 
 public class Registro extends AppCompatActivity {
 
@@ -61,11 +29,7 @@ public class Registro extends AppCompatActivity {
     private AutoCompleteTextView mTelefonoView;
     private AutoCompleteTextView mPassView;
     private AutoCompleteTextView mPass2View;
-    private Button btnConectar;
-
-
-    private View mProgressView;
-    private View mLoginFormView;
+    private Button DoneButton;
 
     private String IP = "10.10.18.246:3306";
     private String baseDatos = "/intro";
@@ -75,32 +39,32 @@ public class Registro extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mRutView = (AutoCompleteTextView)findViewById(R.id.rut);
-        mNombreView = (AutoCompleteTextView)findViewById(R.id.nombre);
-        mMailView = (AutoCompleteTextView)findViewById(R.id.mail);
-        mTelefonoView = (AutoCompleteTextView)findViewById(R.id.telefono);
-        mPassView = (AutoCompleteTextView)findViewById(R.id.contrasena);
-        mPass2View = (AutoCompleteTextView)findViewById(R.id.contrasena2);
-        btnConectar = (Button)findViewById(R.id.done_button);
+        mRutView = (AutoCompleteTextView) findViewById(R.id.rut2);
+        mNombreView = (AutoCompleteTextView) findViewById(R.id.nombre2);
+        mMailView = (AutoCompleteTextView) findViewById(R.id.mail2);
+        mTelefonoView = (AutoCompleteTextView) findViewById(R.id.telefono2);
+        mPassView = (AutoCompleteTextView) findViewById(R.id.contrasena2);
+        mPass2View = (AutoCompleteTextView) findViewById(R.id.contrasena22);
 
+        DoneButton = (Button) findViewById(R.id.done2_button);
+        DoneButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+            cosa();
 
-        btnConectar.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-
-                String email = mMailView.getText().toString();
-                String pass = mPassView.getText().toString();
-                String rut = mRutView.getText().toString();
-                String nombre = mNombreView.getText().toString();
-                String telefono = mTelefonoView.getText().toString();
-                String tipo = "1";
-                String id = "0";
-                new ConexionDB().execute(IP,baseDatos, email, pass, rut, nombre, telefono, tipo, id );
-                Intent intent = new Intent(getApplicationContext(),MainActivity.class);
-                startActivity(intent);
             }
         });
     }
-
+    private void cosa(){
+        String email = mMailView.getText().toString();
+        String pass = mPassView.getText().toString();
+        String rut = mRutView.getText().toString();
+        String nombre = mNombreView.getText().toString();
+        String telefono = mTelefonoView.getText().toString();
+        String tipo = "1";
+        String id = "0";
+        new ConexionDB().execute(IP,baseDatos, email, pass, rut, nombre, telefono, tipo, id );
+    }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will

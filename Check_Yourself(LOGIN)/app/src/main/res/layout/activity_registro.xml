@@ -35,7 +35,7 @@
                 android:layout_height="wrap_content">
 
                 <AutoCompleteTextView
-                    android:id="@+id/rut"
+                    android:id="@+id/rut2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/pedir_rut"
@@ -49,7 +49,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <AutoCompleteTextView
-                    android:id="@+id/nombre"
+                    android:id="@+id/nombre2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/pedir_nombre"
@@ -60,7 +60,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <AutoCompleteTextView
-                    android:id="@+id/mail"
+                    android:id="@+id/mail2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/pedir_email"
@@ -73,7 +73,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <AutoCompleteTextView
-                    android:id="@+id/telefono"
+                    android:id="@+id/telefono2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/pedir_fono"
@@ -86,7 +86,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <AutoCompleteTextView
-                    android:id="@+id/contrasena"
+                    android:id="@+id/contrasena2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/pedir_pass"
@@ -98,7 +98,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <AutoCompleteTextView
-                    android:id="@+id/contrasena2"
+                    android:id="@+id/contrasena22"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/pedir_pass2"
@@ -109,7 +109,7 @@
 
 
             <Button
-                android:id="@+id/done_button"
+                android:id="@+id/done2_button"
                 style="?android:textAppearanceSmall"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
