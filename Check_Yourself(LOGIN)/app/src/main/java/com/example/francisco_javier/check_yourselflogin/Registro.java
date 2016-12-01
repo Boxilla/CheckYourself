@@ -1,5 +1,6 @@
 package com.example.francisco_javier.check_yourselflogin;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 
 import android.os.AsyncTask;
@@ -31,13 +32,13 @@ public class Registro extends AppCompatActivity {
     private AutoCompleteTextView mPass2View;
     private Button DoneButton;
 
-    private String IP = "10.10.18.246:3306";
+    private String IP = "localhost";
     private String baseDatos = "/intro";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_registro);
 
         mRutView = (AutoCompleteTextView) findViewById(R.id.rut2);
         mNombreView = (AutoCompleteTextView) findViewById(R.id.nombre2);
@@ -46,45 +47,30 @@ public class Registro extends AppCompatActivity {
         mPassView = (AutoCompleteTextView) findViewById(R.id.contrasena2);
         mPass2View = (AutoCompleteTextView) findViewById(R.id.contrasena22);
 
-        DoneButton = (Button) findViewById(R.id.done2_button);
+        DoneButton = (Button)this.findViewById(R.id.done2_button);
+
         DoneButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-            cosa();
+                String email = mMailView.getText().toString();
+                String pass = mPassView.getText().toString();
+                String rut = mRutView.getText().toString();
+                String nombre = mNombreView.getText().toString();
+                String telefono = mTelefonoView.getText().toString();
+                String tipo = "1";
+                String id = "0";
+                new ConexionDB().execute(IP,baseDatos, email, pass, rut, nombre, telefono, tipo, id );
+
+                Intent intent2 = new Intent(getApplicationContext(),MainActivity.class);
+                startActivity(intent2);
 
             }
         });
     }
-    private void cosa(){
-        String email = mMailView.getText().toString();
-        String pass = mPassView.getText().toString();
-        String rut = mRutView.getText().toString();
-        String nombre = mNombreView.getText().toString();
-        String telefono = mTelefonoView.getText().toString();
-        String tipo = "1";
-        String id = "0";
-        new ConexionDB().execute(IP,baseDatos, email, pass, rut, nombre, telefono, tipo, id );
-    }
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
 
     public class ConexionDB extends AsyncTask<String,Void,ResultSet>{
-
-
         @Override
-        protected ResultSet doInBackground(String... strings) {
+        protected ResultSet doInBackground(String... strings)  {
         // ip, bd, mail, pass, rut, nombre, telefono , tipo, id
             try {
                 Connection conn;
